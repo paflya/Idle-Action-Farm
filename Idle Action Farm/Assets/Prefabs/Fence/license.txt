@@ -1,0 +1,11 @@
+Model Information:
+* title:	Fence
+* source:	https://sketchfab.com/3d-models/fence-da0e20e7038e44699a3d4158d04cf6e0
+* author:	blenderman (https://sketchfab.com/jaromir.ternavskiy)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Fence" (https://sketchfab.com/3d-models/fence-da0e20e7038e44699a3d4158d04cf6e0) by blenderman (https://sketchfab.com/jaromir.ternavskiy) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
