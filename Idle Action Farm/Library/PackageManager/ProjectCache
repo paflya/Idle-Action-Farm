@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638136676878931602
-    m_Hash: 717134923
+      ticks: 638140349228206791
+    m_Hash: 1656943821
   m_LockFileStatus:
     m_FilePath: E:/Programming/Git/Idle-Action-Farm/Idle Action Farm/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638136676895374687
-    m_Hash: 2149568911
+      ticks: 638140349228944032
+    m_Hash: 2896392802
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_PackageAssets:
@@ -116,140 +116,6 @@ m_PackageAssets:
         type: git
         url: https://github.cds.internal.unity3d.com/unity/com.unity.ide.visualstudio.git
         revision: 1f126893bfb18ea9661fb15771613e841467073c
-        path: 
-    - packageId: com.unity.mobile.notifications@1.4.4
-      testable: 0
-      isDirectDependency: 1
-      version: 1.4.4
-      source: 1
-      resolvedPath: E:\Programming\Git\Idle-Action-Farm\Idle Action Farm\Library\PackageCache\com.unity.mobile.notifications@1.4.4
-      assetPath: Packages/com.unity.mobile.notifications
-      name: com.unity.mobile.notifications
-      displayName: Mobile Notifications
-      author:
-        name: 
-        email: 
-        url: 
-      category: 
-      type: asset
-      description: 'Mobile Notifications package adds support for scheduling local
-        repeatable or one-time notifications on iOS and Android.
-
-
-        Requires
-        iOS 10 and Android 4.4 or above.'
-      status: 4
-      errors: []
-      versions:
-        all:
-        - 1.0.0-preview.4
-        - 1.0.0-preview.5
-        - 1.0.0-preview.7
-        - 1.0.0-preview.8
-        - 1.0.0-preview.9
-        - 1.0.0-preview.10
-        - 1.0.0-preview.13
-        - 1.0.0-preview.17
-        - 1.0.0-preview.21
-        - 1.0.0-preview.23
-        - 1.0.2
-        - 1.0.3-preview
-        - 1.0.3-preview.3
-        - 1.0.3-preview.4
-        - 1.0.3-preview.5
-        - 1.0.3-preview.6
-        - 1.0.3
-        - 1.0.4-preview.1
-        - 1.0.4-preview.2
-        - 1.0.4-preview.3
-        - 1.0.4-preview.4
-        - 1.0.4-preview.5
-        - 1.0.4-preview.6
-        - 1.0.4-preview.9
-        - 1.1.0-preview
-        - 1.2.0-preview
-        - 1.2.1-preview
-        - 1.3.0
-        - 1.3.2
-        - 1.4.1
-        - 1.4.2
-        - 1.4.3
-        - 1.4.4
-        - 2.0.0
-        - 2.0.1
-        - 2.0.2
-        - 2.1.0
-        - 2.1.1
-        compatible:
-        - 1.0.0-preview.4
-        - 1.0.0-preview.5
-        - 1.0.0-preview.7
-        - 1.0.0-preview.8
-        - 1.0.0-preview.9
-        - 1.0.0-preview.10
-        - 1.0.0-preview.13
-        - 1.0.0-preview.17
-        - 1.0.0-preview.21
-        - 1.0.0-preview.23
-        - 1.0.2
-        - 1.0.3-preview
-        - 1.0.3-preview.3
-        - 1.0.3-preview.4
-        - 1.0.3-preview.5
-        - 1.0.3-preview.6
-        - 1.0.3
-        - 1.0.4-preview.1
-        - 1.0.4-preview.2
-        - 1.0.4-preview.3
-        - 1.0.4-preview.4
-        - 1.0.4-preview.5
-        - 1.0.4-preview.6
-        - 1.0.4-preview.9
-        - 1.1.0-preview
-        - 1.2.0-preview
-        - 1.2.1-preview
-        - 1.3.0
-        - 1.3.2
-        - 1.4.1
-        - 1.4.2
-        - 1.4.3
-        - 1.4.4
-        - 2.0.0
-        - 2.0.1
-        - 2.0.2
-        - 2.1.0
-        - 2.1.1
-        verified: 1.4.4
-      dependencies:
-      - name: com.unity.modules.androidjni
-        version: 1.0.0
-      resolvedDependencies:
-      - name: com.unity.modules.androidjni
-        version: 1.0.0
-      keywords:
-      - Android
-      - iOS
-      - Notifications
-      - Mobile
-      registry:
-        id: main
-        name: 
-        url: https://packages.unity.com
-        scopes: []
-        isDefault: 1
-        capabilities: 7
-      hasRegistry: 1
-      hideInEditor: 0
-      entitlements:
-        isAllowed: 1
-      isAssetStorePackage: 0
-      datePublishedTicks: 638009925370000000
-      documentationUrl: 
-      hasRepository: 1
-      repository:
-        type: git
-        url: https://github.com/Unity-Technologies/com.unity.mobile.notifications.git
-        revision: 7670cc38425d3bf4a03044276b99db72348bd805
         path: 
     - packageId: com.unity.test-framework@1.1.33
       testable: 0
