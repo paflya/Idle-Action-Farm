@@ -9,7 +9,7 @@ public class WheatLogic : MonoBehaviour
 
     public void ChopCrops()
     {
-        Instantiate(cutWheat,this.transform.position,this.transform.rotation);
+        Instantiate(cutWheat,this.transform.position,this.transform.rotation,this.transform.parent);
         Instantiate(wheatBlock,this.transform.position, this.transform.rotation);
 
         Destroy(this.gameObject);

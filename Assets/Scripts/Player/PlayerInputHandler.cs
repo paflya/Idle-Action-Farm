@@ -26,9 +26,9 @@ public class PlayerInputHandler : MonoBehaviour
     
 
     //Player stat params
-    public int coinAmount = 0;
     public int maxCropsAmount = 40;
-    public int currentCropsAmount = 0;
+    public int currentCropsAmount = 0; 
+    public int currentCoinAmount = 0;
 
     
 
@@ -54,7 +54,6 @@ public class PlayerInputHandler : MonoBehaviour
     private void FixedUpdate()
     {
         Collider[] InteractionColliders = Physics.OverlapSphere(transform.position, maxPickUpRange, 128);
-
         if (InteractionColliders.Length > 0)
         {
             if (!(currentCropsAmount < maxCropsAmount)) return;
@@ -89,7 +88,9 @@ public class PlayerInputHandler : MonoBehaviour
             
             if (closestObject != null)
             {
+                WheatCollected(-1);
                 ThrowWheatToABarn(closestObject);
+             
             }
 
         }
@@ -125,6 +126,12 @@ public class PlayerInputHandler : MonoBehaviour
             }
         }
         return closestObject;
+    }
+
+    public void SellWheat(DataPair pair)
+    {
+        currentCoinAmount += pair.sendValue;
+        uiCoins.SendMessage("UpdateIndicator", new uiItemInfo(gameObject,currentCoinAmount, " "));
     }
 
     public void ToggleWeaponState(string isActive) => sickle.GetComponent<BoxCollider>().enabled = string.IsNullOrEmpty(isActive);  

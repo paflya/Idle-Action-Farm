@@ -17,7 +17,7 @@ public class CutWheatLogic : MonoBehaviour
         }
         else
         {
-            Instantiate(grownWheat,this.transform.position,this.transform.rotation);
+            Instantiate(grownWheat,this.transform.position,this.transform.rotation,this.transform.parent);
             Destroy(this.gameObject);
         }
     }

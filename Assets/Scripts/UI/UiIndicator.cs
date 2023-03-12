@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -35,38 +36,33 @@ public class UiIndicator : MonoBehaviour
         }
         if (hasAnimation)
         {
-            Instantiate(indicatorImage,itemSender.transform);
+            Instantiate(indicatorImage, itemSender.transform);
         }
+        transform.DOShakePosition(0.5f,2f);    
     }
 
     private void Update()
     {
-        if (currentAmount < amount)
+        if (currentAmount == amount) { currentTime = maxTime; return; }
+
+        if (isGradualy)
         {
-            if (isGradualy)
+            if (currentTime <= 0)
             {
-                if (currentTime <= 0 )
-                {
-                    currentAmount++;
-                    currentTime = maxTime;
-                }
-                else
-                {
-                    currentTime = -Time.deltaTime;
-                }
-
-
+                currentAmount++;
+                currentTime = maxTime;
             }
             else
             {
-                currentAmount = amount;
+                currentTime = -Time.deltaTime;
             }
-            indicatorText.SetText(currentAmount.ToString() + postfix);
         }
         else
         {
-            currentTime = maxTime;
+            currentAmount = amount;
         }
-    } 
+        indicatorText.SetText(currentAmount.ToString() + postfix);
+
+    }
 
 }

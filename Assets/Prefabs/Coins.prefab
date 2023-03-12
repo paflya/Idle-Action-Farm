@@ -299,4 +299,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0709046e63074ac4eb91a3f223bedea4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IndicatorText: {fileID: 6551160754691813383}
+  itemSender: {fileID: 0}
+  indicatorText: {fileID: 6551160754691813381}
+  indicatorImage: {fileID: 6551160754834176856}
+  currentAmount: 0
+  amount: 0
+  hasAnimation: 0
+  isGradualy: 0
+  durationTime: 2
+  postfix: 

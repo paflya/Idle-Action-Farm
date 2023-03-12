@@ -13,7 +13,7 @@ public class BarnLogic : MonoBehaviour
     {
         player = pair.sendTransform;
         Wheat += pair.sendValue;
-        player.GetComponent<PlayerInputHandler>().WheatCollected(-Wheat);
+        player.GetComponent<PlayerInputHandler>().closestObject = null;
     }
     private void Update()
     {

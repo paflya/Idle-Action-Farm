@@ -12,24 +12,25 @@ public class WheatBlockLogic : MonoBehaviour
     public float duration;
     public int WheatAmount;
     public float timeOut;
+    public float speed;
 
     public void Call(moveInfo jumpInfo)
     {
         sender = jumpInfo.sender;
         target = jumpInfo.target;
         duration = jumpInfo.duration;
-
+        
         gameObject.GetComponent<BoxCollider>().isTrigger = true;
     }
     private void Update()
     {
         if (target == null) return;
 
-        float distance = (sender != null) ? Vector3.Distance(sender.transform.position, target.transform.position) :
-            Vector3.Distance(transform.position, target.transform.position);
+        float distance = Vector3.Distance(transform.position, target.transform.position);
 
-        float speed = distance / duration;
+        speed = distance / duration;
         var step = speed * Time.deltaTime;
+        duration -= Time.deltaTime;
 
         transform.position = Vector3.MoveTowards(transform.position, target.transform.position, step);
     }
@@ -38,7 +39,6 @@ public class WheatBlockLogic : MonoBehaviour
     {
         if ((other.tag == "Player" && sender == null) || other.tag == "Barn")
         {
-            print("pass");
             if (other.tag == "Barn") other.SendMessage("WheatCollected", new DataPair(sender.transform, WheatAmount));
             else other.SendMessage("WheatCollected", WheatAmount);
             transform.DOKill();
