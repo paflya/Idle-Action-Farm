@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 196b517732c2a2b46b0b757798db452b, type: 3}
+  m_Name: HarvestableWheat
+  m_EditorClassIdentifier: 
+  replacementObject: {fileID: 3516818271976793201, guid: 5bbf735ecb9da6a43beb7f66dcc85c68,
+    type: 3}
+  pickupBlock: {fileID: 5394806275583542947, guid: b2169e7e7106dd746b3f51f4d05b7d5a,
+    type: 3}

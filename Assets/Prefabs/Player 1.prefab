@@ -183,6 +183,87 @@ Transform:
   m_Father: {fileID: 3274955062049519702}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1488016901249898036
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8335566276833963262}
+  - component: {fileID: 5205660758886284028}
+  - component: {fileID: 5019797852331966513}
+  m_Layer: 0
+  m_Name: Backpack
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8335566276833963262
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1488016901249898036}
+  m_LocalRotation: {x: 0.10010127, y: 0, z: 0, w: 0.9949773}
+  m_LocalPosition: {x: -0, y: -0.012, z: -0.149}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_Children: []
+  m_Father: {fileID: 3891667445961927244}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 11.49, y: 0, z: 0}
+--- !u!33 &5205660758886284028
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1488016901249898036}
+  m_Mesh: {fileID: 4300000, guid: 42c7ab8ff277147459defe636058e393, type: 2}
+--- !u!23 &5019797852331966513
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1488016901249898036}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: d7ac0e389e2deeb44882d05bcdc9ac87, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &1616747241505523173
 GameObject:
   m_ObjectHideFlags: 0
@@ -350,6 +431,7 @@ GameObject:
   - component: {fileID: 1444934420772511592}
   - component: {fileID: 4822612926355244306}
   - component: {fileID: 1407314746522945857}
+  - component: {fileID: -5520421111335618235}
   - component: {fileID: 5273362973172623260}
   m_Layer: 0
   m_Name: Player 1
@@ -406,26 +488,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   joystick: {fileID: 0}
-  controller: {fileID: 5273362973172623260}
-  animator: {fileID: 4822612926355244306}
-  playerSpeed: 10
-  pickupPower: 5
-  pickupSpeed: 0.5
-  throwPower: 7
-  throwSpeed: 1
   sickle: {fileID: 8045073935231178686}
-  scanRadius: 3
-  maxScanRange: 3.03
+  movementInfo: {fileID: 11400000, guid: 60d801288107c3240a0448635f743b61, type: 2}
+  playerSpeed: 10
   cutRange: 2.61
-  closestObject: {fileID: 0}
+  animator: {fileID: 4822612926355244306}
+  controller: {fileID: 5273362973172623260}
+--- !u!114 &-5520421111335618235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2253665271045752274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2b11a1a90aa5ab4fa0fd77259774eb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   wheatBlock: {fileID: 5394806275583542947, guid: b2169e7e7106dd746b3f51f4d05b7d5a,
     type: 3}
-  uiWheat: {fileID: 0}
-  uiCoins: {fileID: 0}
-  coinAmount: 0
-  maxCropsAmount: 30
-  currentCropsAmount: 0
-  awaitingBlock: 0
+  backpack: {fileID: 1488016901249898036}
+  inventoryInfo: {fileID: 11400000, guid: 91627a54cd707cc44ab6d6a808aa28ba, type: 2}
+  crops: {fileID: 11400000, guid: 055f88264b8fa15499bd6ef1c0a84001, type: 2}
+  isUnloading: 0
+  isBackpackVisible: 0
 --- !u!143 &5273362973172623260
 CharacterController:
   m_ObjectHideFlags: 0
@@ -713,6 +800,7 @@ Transform:
   - {fileID: 890494907614624243}
   - {fileID: 8462102096135581729}
   - {fileID: 3974621737920927042}
+  - {fileID: 8335566276833963262}
   m_Father: {fileID: 2130075982800002052}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2342,15 +2430,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fb58ac5b81444034ab1d02d30f602cc2, type: 3}
---- !u!1 &8045073935231178686 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8944730849103308705, guid: fb58ac5b81444034ab1d02d30f602cc2,
-    type: 3}
-  m_PrefabInstance: {fileID: 1407314747525869599}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1186988032734345838 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 287894053750016625, guid: fb58ac5b81444034ab1d02d30f602cc2,
+    type: 3}
+  m_PrefabInstance: {fileID: 1407314747525869599}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8045073935231178686 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8944730849103308705, guid: fb58ac5b81444034ab1d02d30f602cc2,
     type: 3}
   m_PrefabInstance: {fileID: 1407314747525869599}
   m_PrefabAsset: {fileID: 0}

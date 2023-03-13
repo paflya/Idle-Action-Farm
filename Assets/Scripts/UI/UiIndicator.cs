@@ -1,68 +1,62 @@
 using DG.Tweening;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SocialPlatforms.Impl;
 
 public class UiIndicator : MonoBehaviour
 {
-    public GameObject itemSender;
-    public TextMeshProUGUI indicatorText;
-    public GameObject indicatorImage;
+    [Header("Objects assigned in editor")]
+    [SerializeField] private TextMeshProUGUI indicatorText;
+    [SerializeField] private GameObject indicatorImage;
 
-    public int currentAmount;
-    public int amount;
+    [Header("Scriptable objects")]
+    [SerializeField] private UISettings indicatorSettings;
+    [SerializeField] private InventoryBlock value;
 
-    //Animation variables
-    public bool hasAnimation;
-    public bool isGradualy;
-    public float durationTime = 2f;
-
-    private float maxTime;
-    private float currentTime;
-
-    //postfix thats added after the amount
-    public string postfix;
-
-    public void UpdateIndicator(uiItemInfo uiItemInfo)
+    [Header("Values on runtime")]
+    [SerializeField] private int currentDisplayedValue;
+    [SerializeField] private string postfix;
+    private void OnEnable()
     {
-        amount = uiItemInfo.value;
-        postfix = uiItemInfo.postfix;
-        itemSender = uiItemInfo.sender;
-        if (isGradualy)
-        {
-            maxTime = durationTime / amount;
-        }
-        if (hasAnimation)
-        {
-            Instantiate(indicatorImage, itemSender.transform);
-        }
-        transform.DOShakePosition(0.5f,2f);    
+        postfix = value.isCapped ? "/" + value.maxAmount : "";
+        indicatorText.SetText(currentDisplayedValue.ToString() + postfix);
+        value.amountUpdateEvent.AddListener(UpdateIndicator);
+    }
+    private void OnDisable()
+    {
+        value.amountUpdateEvent?.RemoveListener(UpdateIndicator);
     }
 
-    private void Update()
+    public void UpdateIndicator(Vector3 position, int amount)
     {
-        if (currentAmount == amount) { currentTime = maxTime; return; }
+        postfix = value.isCapped ? "/" + value.maxAmount : "";
+        Sequence sequence = DOTween.Sequence();
+        Tween tween;
+        
+        if (indicatorSettings.hasAnimation)
+        {
+            GameObject icon =Instantiate(indicatorImage, Camera.main.WorldToScreenPoint(position), Quaternion.identity,transform);
+            tween = icon.transform.DOMove(indicatorImage.transform.position, indicatorSettings.animationLength);
+            tween.onComplete += () => Destroy(icon);
+            sequence.Append(tween);
+        }
 
-        if (isGradualy)
+        tween = transform.DOShakePosition(0.5f, 2f);
+        sequence.Append(tween);
+
+        if (indicatorSettings.isGradual)
         {
-            if (currentTime <= 0)
-            {
-                currentAmount++;
-                currentTime = maxTime;
-            }
-            else
-            {
-                currentTime = -Time.deltaTime;
-            }
+            tween = DOTween.To(() => currentDisplayedValue, x => currentDisplayedValue = x, value.currentAmount, indicatorSettings.durationTime);
+            tween.onUpdate += () => indicatorText.SetText(currentDisplayedValue.ToString()+postfix);
+            sequence.Append(tween);
         }
-        else
+        sequence.Play();
+        if (!indicatorSettings.isGradual)
         {
-            currentAmount = amount;
+            currentDisplayedValue = value.currentAmount;
+            indicatorText.SetText(currentDisplayedValue.ToString() + postfix);
         }
-        indicatorText.SetText(currentAmount.ToString() + postfix);
 
     }
+
 
 }

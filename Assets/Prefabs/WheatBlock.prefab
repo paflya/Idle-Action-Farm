@@ -125,9 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a5a2db20954abf4cbc2001678a62d2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sender: {fileID: 0}
-  target: {fileID: 0}
-  jumpPower: 0
-  duration: 0
-  WheatAmount: 1
-  timeOut: 10
+  blockInfo: {fileID: 11400000, guid: 5d1ad685dcb00d247949469fbbd6c89a, type: 2}
+  isActive: 0
+  currentTime: 0
+  ignorePlayer: 0

@@ -108,6 +108,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22b28a5894aa43b44b6f611db8a4f82a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  Wheat: 0
-  Timeout: 4.4
+  coins: {fileID: 11400000, guid: b6cd86307a9429e4b9ab35180249eb63, type: 2}

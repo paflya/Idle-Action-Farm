@@ -1,61 +1,55 @@
 using DG.Tweening;
-using System.Collections;
-using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
-using UnityEngine.Analytics;
-using static UnityEngine.GraphicsBuffer;
 
 public class WheatBlockLogic : MonoBehaviour
 {
-    public GameObject sender;
-    public GameObject target;
-    public float duration;
-    public int WheatAmount;
-    public float timeOut;
-    public float speed;
+    [Header("Variables from scriptable object on Start")]
+    [SerializeField] private BlockInfo blockInfo;
 
-    public void Call(moveInfo jumpInfo)
+    [Header("Variables on runtime")]
+    [SerializeField] private bool isActive;
+    [SerializeField] private float currentTime;
+    [SerializeField] private bool ignorePlayer;
+
+    public void JumpToPos(JumpToPosParams jumpParams)
     {
-        sender = jumpInfo.sender;
-        target = jumpInfo.target;
-        duration = jumpInfo.duration;
-        
+        isActive = true;
+        Sequence jumpSequence= transform.DOJump(jumpParams.Target.position,2f,1,jumpParams.Duration);
+        Tween tween= transform.DOMove(jumpParams.Target.position, jumpParams.Duration);
+        jumpSequence.onComplete += () => tween.Play();
+        jumpSequence.Play();
+
+        gameObject.GetComponent<Rigidbody>().isKinematic = true;
+
         gameObject.GetComponent<BoxCollider>().isTrigger = true;
     }
     private void Update()
     {
-        if (target == null) return;
-
-        float distance = Vector3.Distance(transform.position, target.transform.position);
-
-        speed = distance / duration;
-        var step = speed * Time.deltaTime;
-        duration -= Time.deltaTime;
-
-        transform.position = Vector3.MoveTowards(transform.position, target.transform.position, step);
+        if (!isActive)
+        {
+            currentTime += Time.deltaTime;
+            if (currentTime >= blockInfo.timeOut) { Destroy(gameObject); return; }
+            else return;
+        }
     }
+
+    public void SetIgnore() => ignorePlayer = true;
 
     private void OnTriggerEnter(Collider other)
     {
-        if ((other.tag == "Player" && sender == null) || other.tag == "Barn")
+        if (other.tag == "Player" && !ignorePlayer)
         {
-            if (other.tag == "Barn") other.SendMessage("WheatCollected", new DataPair(sender.transform, WheatAmount));
-            else other.SendMessage("WheatCollected", WheatAmount);
+            other.SendMessage("WheatCollected", 1);
             transform.DOKill();
             Destroy(gameObject);
-
+        }
+         if   (other.tag == "Barn")
+         {
+            other.SendMessage("WheatCollected", blockInfo.blockCost);
+            transform.DOKill();
+            Destroy(gameObject);
         }
 
-    }
-}
-            
-public struct DataPair
-{
-    public Transform sendTransform;
-    public int sendValue;
-    public DataPair(Transform transform, int value)
-    {
-        this.sendTransform = transform;
-        this.sendValue = value;
     }
 }

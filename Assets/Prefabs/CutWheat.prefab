@@ -95,8 +95,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d59ddc34adcf2b479a498a3806c779e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grownWheat: {fileID: 4405671233951107728, guid: 877d1c77907d94a48b0c410e43a98d2f,
-    type: 3}
+  behavior: {fileID: 11400000, guid: e89e784a7e0eb7340adbc6250aa15f51, type: 2}
+  currentTime: 0
 --- !u!64 &8940492116219629375
 MeshCollider:
   m_ObjectHideFlags: 0
