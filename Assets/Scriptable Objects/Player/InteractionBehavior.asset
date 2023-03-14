@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: InteractionBehavior
   m_EditorClassIdentifier: 
   pickupDuration: 0.5
-  throwDuration: 0.2
+  throwDuration: 0.68
+  throwDelay: 0.34
   maxPickUpRange: 3
   maxUnloadRange: 25
   unloadTime: 0.2

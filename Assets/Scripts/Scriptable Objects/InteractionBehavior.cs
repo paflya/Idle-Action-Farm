@@ -8,6 +8,8 @@ public class InteractionBehavior : ScriptableObject
 
     [SerializeField] public float throwDuration;
 
+    [SerializeField] public float throwDelay;
+
     [SerializeField] public float maxPickUpRange;
 
     [SerializeField] public float maxUnloadRange;

@@ -34,8 +34,12 @@ public class UiIndicator : MonoBehaviour
         
         if (indicatorSettings.hasAnimation)
         {
+            sequence.PrependInterval(0.5f);
             GameObject icon =Instantiate(indicatorImage, Camera.main.WorldToScreenPoint(position), Quaternion.identity,transform);
+            
             tween = icon.transform.DOMove(indicatorImage.transform.position, indicatorSettings.animationLength);
+            icon.SetActive(false);
+            tween.onPlay += () => icon.SetActive(true);
             tween.onComplete += () => Destroy(icon);
             sequence.Append(tween);
         }

@@ -12,7 +12,8 @@ public class PlayerInventoryHandler : MonoBehaviour
 
     [Header("Variables on runtime")]
     [SerializeField] private bool isUnloading = false;
-    [SerializeField] private bool isBackpackVisible =false;
+    [SerializeField] private bool isPickingUp = false;
+    [SerializeField] private float timeToUnload;
 
     private void FixedUpdate()
     {
@@ -25,7 +26,12 @@ public class PlayerInventoryHandler : MonoBehaviour
             if (closestBarn != null)
             {
                 isUnloading = true;
-                ThrowWheatToABarn(closestBarn.transform);
+                if (timeToUnload > inventoryInfo.throwDelay)
+                {
+                    timeToUnload = 0;
+                    ThrowWheatToABarn(closestBarn.transform);
+                }
+                else timeToUnload += Time.fixedDeltaTime;
             }
             backpack.SetActive(true);
         }
@@ -35,8 +41,9 @@ public class PlayerInventoryHandler : MonoBehaviour
         {
             closestBlock = SearchObjectByLayer(128, inventoryInfo.maxPickUpRange);
 
-            if (closestBlock != null && !isUnloading)
+            if (closestBlock != null && !isUnloading && !isPickingUp)
             {
+                isPickingUp= true;
                 CollectWheat(closestBlock);
             }
         }
@@ -55,12 +62,17 @@ public class PlayerInventoryHandler : MonoBehaviour
     }
 
     private void CollectWheat(GameObject hayBlock) => hayBlock.SendMessage("JumpToPos",
-        new JumpToPosParams { Duration = inventoryInfo.pickupDuration, Target= backpack.transform });
-    public void WheatCollected(int amount) => crops.UpdateAmount(transform.position, amount);
+        new JumpToPosParams { Duration = inventoryInfo.pickupDuration, Target = backpack.transform });
+    public void WheatCollected(int amount)
+    {
+        isPickingUp = false;
+        crops.UpdateAmount(transform.position, amount);
+    }
+
 
     private void ThrowWheatToABarn(Transform barn)
     {
-        GameObject block = Instantiate(wheatBlock, transform.position, transform.rotation);
+        GameObject block = Instantiate(wheatBlock, backpack.transform.position, transform.rotation);
         block.SendMessage("SetIgnore");
         block.SendMessage("JumpToPos", new JumpToPosParams { Duration = inventoryInfo.throwDuration, Target = barn });
         crops.UpdateAmount(transform.position, -1);
