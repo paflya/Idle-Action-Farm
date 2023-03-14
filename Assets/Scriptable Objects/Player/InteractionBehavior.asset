@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cffb564e1f49954ca7365787bf513b0, type: 3}
   m_Name: InteractionBehavior
   m_EditorClassIdentifier: 
-  pickupDuration: 0.5
-  throwDuration: 0.68
-  throwDelay: 0.34
+  pickupDuration: 0.14
+  throwDuration: 0.23
+  throwDelay: 0.19
   maxPickUpRange: 3
   maxUnloadRange: 25
   unloadTime: 0.2
